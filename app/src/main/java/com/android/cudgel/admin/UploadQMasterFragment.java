@@ -1,14 +1,25 @@
 package com.android.cudgel.admin;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.List;
+
+import base.MyDrawerActivity;
 
 
 public class UploadQMasterFragment extends Fragment {
@@ -84,17 +95,60 @@ private void  processValidate(){
         etTotTime.setError("Please enter Total time for test");
     }
     else{
-        processCheckTestID();
+        processCheckTestID(etTid.getText().toString().trim());
     }
 }
 
 
-private void processCheckTestID(){
+private void processCheckTestID(String testid){
+    ParseQuery<ParseObject> query = ParseQuery.getQuery("Question_master");
+     query.whereEqualTo("Test_id", testid.toUpperCase());
 
+    query.findInBackground(new FindCallback<ParseObject>() {
+        @Override
+        public void done(List<ParseObject> parseObjects, ParseException e) {
+            if(e==null){
+                // check for database
+
+                if(parseObjects.size()!=0){
+                    Toast.makeText(getActivity(), "Testid already exists !!!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    processSaveDatatoServer();
+
+                }
+
+
+            }
+            else{
+                Toast.makeText(getActivity(), "Error to fetch details !!!", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+    });
 }
 
  private void processSaveDatatoServer(){
+     try{
+         ParseObject gameScore = new ParseObject("Question_master");
 
+         gameScore.put("Test_id", etTid.getText().toString().trim().toUpperCase());
+         gameScore.put("Password", etPassword.getText().toString().trim());
+         gameScore.put("Tot_Question", etTotQ.getText().toString().trim());
+         gameScore.put("Tot_Time", etTotTime.getText().toString().trim());
+
+
+         gameScore.saveInBackground();
+
+         Toast.makeText(getActivity(),"Record saved sucessfully",Toast.LENGTH_LONG).show();
+         Intent i = new Intent(getActivity(), MyDrawerActivity.class);
+         startActivity(i);
+         getActivity().finish();
+     }catch(Exception e){
+
+         Toast.makeText(getActivity(),"Error Occur",Toast.LENGTH_LONG).show();
+     }
 }
 
 //end of main class

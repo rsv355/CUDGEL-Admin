@@ -79,7 +79,6 @@ public class UploadTestFragment extends Fragment {
         txt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"click",Toast.LENGTH_SHORT).show();
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentManager manager1 = getActivity().getSupportFragmentManager();
