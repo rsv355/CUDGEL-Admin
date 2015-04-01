@@ -21,8 +21,10 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.cudgel.admin.AboutusFragment;
 import com.android.cudgel.admin.BlankFragment;
 import com.android.cudgel.admin.R;
+import com.android.cudgel.admin.UploadTestFragment;
 
 
 public class MyDrawerActivity extends ActionBarActivity {
@@ -109,50 +111,39 @@ public class MyDrawerActivity extends ActionBarActivity {
 
                     case 0:
 
-                     /*   FragmentManager manager = getSupportFragmentManager();
+                      FragmentManager manager = getSupportFragmentManager();
                         FragmentTransaction ft = manager.beginTransaction();
-                        ft.replace(R.id.main_container, new MyAccountFragment(), "MA");
+                        ft.replace(R.id.main_container, new BlankFragment(), "MA");
                         // ft.addToBackStack("");
                         ft.commit();
 
                         for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
                             fm.popBackStack();
-                        }*/
+                        }
 
                         break;
                     case 1:
 
-//                        FragmentManager manager1 = getSupportFragmentManager();
-//                        FragmentTransaction ft1 = manager1.beginTransaction();
-//                        ft1.replace(R.id.main_container, new Profile());
-//                       // ft1.addToBackStack("");
-//                        ft1.commit();
-//                        for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
-//                            fm.popBackStack();
-//                        }
-                      break;
+                        FragmentManager manager1 = getSupportFragmentManager();
+                        FragmentTransaction ft1 = manager1.beginTransaction();
+                        ft1.replace(R.id.main_container, new UploadTestFragment());
+                       // ft1.addToBackStack("");
+                        ft1.commit();
+                        for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
+                            fm.popBackStack();
+                        }
+                        break;
                     case 2:
 
-                        /*FragmentManager manager22 = getSupportFragmentManager();
+                        FragmentManager manager22 = getSupportFragmentManager();
                         FragmentTransaction ft22 = manager22.beginTransaction();
-                        ft22.replace(R.id.main_container, new MyRecipient_home());
+                        ft22.replace(R.id.main_container, new AboutusFragment());
                        // ft22.addToBackStack("");
                         ft22.commit();
                         for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
                             fm.popBackStack();
-                        }*/
+                        }
 
-                        break;
-                    case 3:
-
-                   /*     FragmentManager manager2 = getSupportFragmentManager();
-                        FragmentTransaction ft2 = manager2.beginTransaction();
-                        ft2.replace(R.id.main_container, new Aboutus());
-                       // ft2.addToBackStack("");
-                        ft2.commit();
-                        for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
-                            fm.popBackStack();
-                        }*/
                         break;
                 }
 
