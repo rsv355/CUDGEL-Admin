@@ -4,16 +4,46 @@
     android:orientation="vertical"
     xmlns:genius="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
-        <TextView
-            android:id="@+id/txtReg"
 
-            android:textColor="#494949"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="question master"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+       <EditText
+           android:id="@+id/etTid"
+           android:hint="Enter Test id"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/etPassword"
+            android:hint="Enter Test Password"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/etTotQ"
+            android:hint="Enter Total Questions"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/etTotTime"
+            android:hint="Enter Total Time (in Minutes)"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
+        <Button
+            android:layout_marginTop="10dp"
+            android:background="#E68A00"
+            android:textColor="#fff"
+            android:text="Save"
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

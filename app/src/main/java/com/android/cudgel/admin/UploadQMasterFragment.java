@@ -6,16 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link com.android.cudgel.admin.UploadQMasterFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link com.android.cudgel.admin.UploadQMasterFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class UploadQMasterFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,17 +20,10 @@ public class UploadQMasterFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private EditText etTid,etPassword,etTotQ,etTotTime;
+    private Button btnSave;
 
-    private OnFragmentInteractionListener mListener;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static UploadQMasterFragment newInstance(String param1, String param2) {
         UploadQMasterFragment fragment = new UploadQMasterFragment();
@@ -65,30 +53,48 @@ public class UploadQMasterFragment extends Fragment {
         // Inflate the layout for this fragment
         View convertview =inflater.inflate(R.layout.fragment_upload_q_master, container, false);
 
+        etTid = (EditText)convertview.findViewById(R.id.etTid);
+        etPassword= (EditText)convertview.findViewById(R.id.etPassword);
+        etTotQ= (EditText)convertview.findViewById(R.id.etTotQ);
+        etTotTime= (EditText)convertview.findViewById(R.id.etTotTime);
+        btnSave= (Button)convertview.findViewById(R.id.btnSave);
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                processValidate();
+            }
+        });
+
+
         return  convertview;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+private void  processValidate(){
+    if(etTid.getText().toString().trim().length()==0){
+        etTid.setError("Please enter Test Id");
     }
-
-
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+    else if(etPassword.getText().toString().trim().length()==0){
+        etPassword.setError("Please enter Test Password");
     }
+    else if(etTotQ.getText().toString().trim().length()==0){
+        etTotQ.setError("Please enter Total Questions");
+    }
+    else if(etTotTime.getText().toString().trim().length()==0){
+        etTotTime.setError("Please enter Total time for test");
+    }
+    else{
+        processCheckTestID();
+    }
+}
 
+private void processCheckTestID(){
+
+}
+
+ private void processSaveDatatoServer(){
+
+}
+
+//end of main class
 }
