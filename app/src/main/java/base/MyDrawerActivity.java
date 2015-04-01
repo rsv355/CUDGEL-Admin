@@ -61,6 +61,7 @@ public class MyDrawerActivity extends ActionBarActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
         ft.replace(R.id.main_container, new BlankFragment());
+      //  ft.addToBackStack("");
         ft.commit();
 
     }
@@ -114,12 +115,12 @@ public class MyDrawerActivity extends ActionBarActivity {
                       FragmentManager manager = getSupportFragmentManager();
                         FragmentTransaction ft = manager.beginTransaction();
                         ft.replace(R.id.main_container, new BlankFragment(), "MA");
-                        // ft.addToBackStack("");
+                         ft.addToBackStack("");
                         ft.commit();
-
+/*
                         for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
                             fm.popBackStack();
-                        }
+                        }*/
 
                         break;
                     case 1:
@@ -127,22 +128,22 @@ public class MyDrawerActivity extends ActionBarActivity {
                         FragmentManager manager1 = getSupportFragmentManager();
                         FragmentTransaction ft1 = manager1.beginTransaction();
                         ft1.replace(R.id.main_container, new UploadTestFragment());
-                       // ft1.addToBackStack("");
+                        ft1.addToBackStack("");
                         ft1.commit();
-                        for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
+                        /*for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
                             fm.popBackStack();
-                        }
+                        }*/
                         break;
                     case 2:
 
                         FragmentManager manager22 = getSupportFragmentManager();
                         FragmentTransaction ft22 = manager22.beginTransaction();
                         ft22.replace(R.id.main_container, new AboutusFragment());
-                       // ft22.addToBackStack("");
+                        ft22.addToBackStack("");
                         ft22.commit();
-                        for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
+                        /*for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
                             fm.popBackStack();
-                        }
+                        }*/
 
                         break;
                 }
