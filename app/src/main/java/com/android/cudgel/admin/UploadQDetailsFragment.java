@@ -1,5 +1,6 @@
 package com.android.cudgel.admin;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ public class UploadQDetailsFragment extends Fragment {
     private Button btnSave;
     Spinner spTest;
     ArrayList<String> Testid;
+    ProgressDialog dialog;
 
 
     // TODO: Rename and change types and number of parameters
@@ -184,6 +186,11 @@ public class UploadQDetailsFragment extends Fragment {
     }
 
     private void processSaveDatatoServer(){
+
+        dialog= ProgressDialog.show(getActivity(), "Please Wait", "downloading dictionary from server...", true);
+        dialog.setCancelable(false);
+
+
         try{
             ParseObject gameScore = new ParseObject("Question_details");
 
@@ -199,10 +206,11 @@ public class UploadQDetailsFragment extends Fragment {
 
             gameScore.saveInBackground();
 
+            dialog.dismiss();
             Toast.makeText(getActivity(),"Question saved sucessfully",Toast.LENGTH_LONG).show();
-            Intent i = new Intent(getActivity(), MyDrawerActivity.class);
+           /* Intent i = new Intent(getActivity(), MyDrawerActivity.class);
             startActivity(i);
-            getActivity().finish();
+            getActivity().finish();*/
         }catch(Exception e){
 
             Toast.makeText(getActivity(),"Error Occur",Toast.LENGTH_LONG).show();

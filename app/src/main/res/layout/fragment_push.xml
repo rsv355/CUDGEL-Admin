@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:genius="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+    <TextView
+        android:id="@+id/txtReg"
+
+        android:textColor="#494949"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Comming Soon :)"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+</LinearLayout>
