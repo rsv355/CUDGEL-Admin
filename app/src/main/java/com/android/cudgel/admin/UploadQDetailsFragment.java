@@ -40,6 +40,7 @@ public class UploadQDetailsFragment extends Fragment {
     private Button btnSave;
     Spinner spTest;
     ArrayList<String> Testid;
+    ArrayList<String> Test_tot_que;
     ProgressDialog dialog;
 
 
@@ -70,6 +71,7 @@ public class UploadQDetailsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Testid = new ArrayList<String>();
+        Test_tot_que= new ArrayList<String>();
         Testid.add(0,"Select");
         processfetchTestid();
     }
@@ -86,6 +88,7 @@ public class UploadQDetailsFragment extends Fragment {
                     // check for database
                     for(int i=0;i<parseObjects.size();i++) {
                         Testid.add(i+1,parseObjects.get(i).get("Test_id").toString().trim());
+                        Test_tot_que.add(parseObjects.get(i).get("Tot_Question").toString().trim());
                     }
 
 
@@ -152,8 +155,38 @@ public class UploadQDetailsFragment extends Fragment {
         }
 
         else{
-            processCheckQuestionID(etQid.getText().toString().trim());
+            processCheckQuestionLimit(spTest.getSelectedItemPosition());
         }
+    }
+
+
+    private void processCheckQuestionLimit(final int pos){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Question_details");
+        query.whereEqualTo("Test_id",spTest.getSelectedItem().toString());
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> parseObjects, ParseException e) {
+                if(e==null){
+                    // check for database
+
+                    if(parseObjects.size() == Integer.valueOf(Test_tot_que.get(pos-1).toString())){
+                        Toast.makeText(getActivity(), "No more Question will inserted for this test", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        processCheckQuestionID(etQid.getText().toString().trim());
+
+                    }
+
+
+                }
+                else{
+                    Toast.makeText(getActivity(), "Error to fetch details !!!", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
     }
 
     private void processCheckQuestionID(String qid){
@@ -208,9 +241,15 @@ public class UploadQDetailsFragment extends Fragment {
 
             dialog.dismiss();
             Toast.makeText(getActivity(),"Question saved sucessfully",Toast.LENGTH_LONG).show();
-           /* Intent i = new Intent(getActivity(), MyDrawerActivity.class);
-            startActivity(i);
-            getActivity().finish();*/
+
+            etQid.setText("");
+            etQuestion.setText("");
+            etoptA.setText("");
+            etoptB.setText("");
+            etoptC.setText("");
+            etoptD.setText("");
+            etCorrectopt.setText("");
+
         }catch(Exception e){
 
             Toast.makeText(getActivity(),"Error Occur",Toast.LENGTH_LONG).show();
