@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:genius="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtuser"
+            android:padding="16dp"
+            android:layout_weight="1"
+            android:textColor="#fff"
+            android:background="#006666"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="View Users"/>
+
+
+        <TextView
+            android:id="@+id/txtevent"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:layout_weight="1"
+            android:textColor="#fff"
+            android:background="#33D633"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Add Upcoming Event"/>
+
+        <TextView
+            android:id="@+id/txtach"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:layout_weight="1"
+            android:textColor="#fff"
+            android:background="#1975FF"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Add Achievements"/>
+        </LinearLayout>
+</LinearLayout>
