@@ -3,8 +3,6 @@ package com.android.cudgel.admin;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +13,12 @@ import android.widget.TextView;
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link com.android.cudgel.admin.PUSHNotificationFragment.OnFragmentInteractionListener} interface
+ * {@link com.android.cudgel.admin.WebFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link com.android.cudgel.admin.PUSHNotificationFragment#newInstance} factory method to
+ * Use the {@link com.android.cudgel.admin.WebFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PUSHNotificationFragment extends Fragment {
+public class WebFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -42,8 +40,8 @@ public class PUSHNotificationFragment extends Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PUSHNotificationFragment newInstance(String param1, String param2) {
-        PUSHNotificationFragment fragment = new PUSHNotificationFragment();
+    public static WebFragment newInstance(String param1, String param2) {
+        WebFragment fragment = new WebFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -51,7 +49,7 @@ public class PUSHNotificationFragment extends Fragment {
         return fragment;
     }
 
-    public PUSHNotificationFragment() {
+    public WebFragment() {
         // Required empty public constructor
     }
 
@@ -68,19 +66,11 @@ public class PUSHNotificationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View convert = inflater.inflate(R.layout.fragment_push, container, false);
-        TextView txtpush = (TextView)convert.findViewById(R.id.txtpush);
+        View convert = inflater.inflate(R.layout.web, container, false);
+       WebView webView = (WebView)convert. findViewById(R.id.webView1);
 
-        txtpush.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager manager22 = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft22 = manager22.beginTransaction();
-                ft22.replace(R.id.main_container, new WebFragment());
-                ft22.addToBackStack("");
-                ft22.commit();
-            }
-        });
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl("http://www.parse.com");
 
         return convert;
     }

@@ -4,16 +4,24 @@
     android:orientation="vertical"
     xmlns:genius="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:padding="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
-        android:id="@+id/txtReg"
-
-        android:textColor="#494949"
+        android:layout_gravity="center_vertical"
+        android:padding="32dp"
+        android:id="@+id/txtpush"
+        android:background="#A37519"
+        android:textColor="#fff"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:text="Comming Soon :)"
+        android:text="Send Push"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"/>
-
+        android:layout_height="wrap_content"
+        />
+    </LinearLayout>
 </LinearLayout>
