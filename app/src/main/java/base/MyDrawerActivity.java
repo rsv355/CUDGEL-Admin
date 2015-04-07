@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.android.cudgel.admin.AboutusFragment;
 import com.android.cudgel.admin.BlankFragment;
+import com.android.cudgel.admin.CLUBFragment;
 import com.android.cudgel.admin.PUSHNotificationFragment;
 import com.android.cudgel.admin.R;
 import com.android.cudgel.admin.UploadTestFragment;
@@ -36,9 +37,9 @@ public class MyDrawerActivity extends ActionBarActivity {
     private ActionBarDrawerToggle drawerToggle;
     private ListView leftDrawerList;
     private ArrayAdapter<String> navigationDrawerAdapter;
-    private String[] leftSliderData = {"Home", "Upload Test", "Push Notification","About Us"};
+    private String[] leftSliderData = {"Home", "Upload Test", "Upload Club Events","Push Notification","About Us"};
 
-    private int[] imagelist = {R.drawable.ic_action_home,R.drawable.ic_action_open_in_browser,R.drawable.ic_action_open_in_browser,R.drawable.ic_action_info_outline
+    private int[] imagelist = {R.drawable.ic_action_home,R.drawable.ic_action_open_in_browser,R.drawable.ic_action_open_in_browser,R.drawable.ic_action_open_in_browser,R.drawable.ic_action_info_outline
            };
 
     public ProgressBar pb_toolbar;
@@ -139,7 +140,7 @@ public class MyDrawerActivity extends ActionBarActivity {
 
                         FragmentManager manager11 = getSupportFragmentManager();
                         FragmentTransaction ft11 = manager11.beginTransaction();
-                        ft11.replace(R.id.main_container, new PUSHNotificationFragment());
+                        ft11.replace(R.id.main_container, new CLUBFragment());
                         ft11.addToBackStack("");
                         ft11.commit();
                         /*for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
@@ -147,6 +148,17 @@ public class MyDrawerActivity extends ActionBarActivity {
                         }*/
                         break;
                     case 3:
+
+                        FragmentManager manager111 = getSupportFragmentManager();
+                        FragmentTransaction ft111 = manager111.beginTransaction();
+                        ft111.replace(R.id.main_container, new PUSHNotificationFragment());
+                        ft111.addToBackStack("");
+                        ft111.commit();
+                        /*for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
+                            fm.popBackStack();
+                        }*/
+                        break;
+                    case 4:
 
                         FragmentManager manager22 = getSupportFragmentManager();
                         FragmentTransaction ft22 = manager22.beginTransaction();
