@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class CLUBFragment2 extends Fragment {
 
 
-    TextView txtach,txtevent,txtuser;
+    TextView txtach,txtevent,txtuser,txttestuser;
     public CLUBFragment2() {
         // Required empty public constructor
     }
@@ -30,7 +30,18 @@ public class CLUBFragment2 extends Fragment {
         txtach = (TextView)convert.findViewById(R.id.txtach);
         txtevent = (TextView)convert.findViewById(R.id.txtevent);
         txtuser = (TextView)convert.findViewById(R.id.txtuser);
+        txttestuser= (TextView)convert.findViewById(R.id.txttestuser);
 
+        txttestuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager11 = getActivity().getSupportFragmentManager();
+                FragmentTransaction ft11 = manager11.beginTransaction();
+                ft11.replace(R.id.main_container, new TestUSerFragment());
+                ft11.addToBackStack("");
+                ft11.commit();
+            }
+        });
 
 
         txtach.setOnClickListener(new View.OnClickListener() {

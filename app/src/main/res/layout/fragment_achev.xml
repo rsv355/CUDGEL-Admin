@@ -4,16 +4,19 @@
     android:orientation="vertical"
     xmlns:genius="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
-        <TextView
-            android:id="@+id/txtReg"
+    <LinearLayout
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            android:textColor="#494949"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="achev"
+        <ListView
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_height="match_parent"></ListView>
+    </LinearLayout>
 
 </LinearLayout>
